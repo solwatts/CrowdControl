@@ -1,0 +1,29 @@
+DELAY 500
+REM Open the Run dialog window
+GUI r
+DELAY 500
+REM Run PowerShell as admin 
+STRING powershell
+CTRL-SHIFT ENTER
+DELAY 1000
+REM Accept UAC prompt
+ALT y
+DELAY 1000
+REM Change directory to CrowdStrike driver directory
+STRING cd $env:WINDIR\System32\drivers\CrowdStrike
+ENTER
+REM Remove affected CrowdStrike driver
+STRING Remove-Item .\C-00000291*.sys -force
+ENTER
+DELAY 1000
+REM Verify the affected CrowdStrike driver keys have been removed and rerun if present
+STRING while (Get-ChildItem .\C-00000291*.sys -ErrorAction SilentlyContinue) { Remove-Item .\C-00000291*.sys -Force; Start-Sleep -Seconds 1 }
+ENTER
+DELAY 1000
+REM Remove safe boot key BCD value if present
+STRING bcdedit /deletevalue {current} safeboot
+ENTER
+DELAY 1000
+REM Restart to apply changes
+STRING shutdown /r /t 0
+ENTER
