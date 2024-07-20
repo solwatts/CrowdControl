@@ -6,9 +6,6 @@ REM Run PowerShell as admin
 STRING powershell
 CTRL-SHIFT ENTER
 DELAY 1000
-REM Accept UAC prompt
-ALT y
-DELAY 1000
 REM Change directory to CrowdStrike driver directory
 STRING cd $env:WINDIR\System32\drivers\CrowdStrike
 ENTER
