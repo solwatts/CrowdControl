@@ -1,8 +1,5 @@
 CrowdControl
 ===
-<p align="center">
-  <img width="256" height="256" src="icon.jpg">
-</p>
 
 A basic DuckyScript that allows a Flipper Zero (or other Rubber Ducky-like device) to leverage CrowdStrike's [workaround steps for individual hosts](https://www.crowdstrike.com/blog/statement-on-falcon-content-update-for-windows-hosts/) and:
 * Remove CrowdStrike C-00000291*.sys channel files from Windows host machines operating in Safe Mode and logged in as an Administrator,
